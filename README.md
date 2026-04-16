@@ -1,6 +1,8 @@
 # Devcontainer Setup
 
-A Claude Code devcontainer for development at Xebia.
+A personal Claude Code devcontainer setup.
+
+Inspired by Trail of Bits' [claude-code-devcontainer](https://github.com/trailofbits/claude-code-devcontainer), which was purpose-built for running Claude Code in bypass-permissions mode safely during security audits. Their setup provided a solid foundation: filesystem isolation from the host, persistent volumes, plugin integration, and optional network isolation — all designed by a team that knows security. Rather than building from scratch, this repo adapts their approach with additional tooling and integrations.
 
 ## What's Included
 
