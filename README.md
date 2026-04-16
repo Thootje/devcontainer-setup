@@ -16,9 +16,6 @@ Inspired by Trail of Bits' [claude-code-devcontainer](https://github.com/trailof
 - **Git**: [git-delta](https://github.com/dandavison/delta) for diffs
 - **Terminal**: tmux with mouse support and vi keys
 
-### MCP Integrations
-- Slack
-
 ### Key Features
 - Persistent shell history across container rebuilds (200k lines)
 - Obsidian vault mounted at `/obsidian`

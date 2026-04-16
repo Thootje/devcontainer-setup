@@ -22,7 +22,10 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "anthropic.claude-code"
+        "anthropic.claude-code",
+        "innoverio.vscode-dbt-power-user",
+        "mechatroner.rainbow-csv",
+        "redhat.vscode-yaml"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
