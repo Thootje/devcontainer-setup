@@ -85,10 +85,7 @@ RUN curl -fsSL https://claude.ai/install.sh | bash && \
   claude plugin marketplace add anthropics/skills && \
   claude plugin marketplace add trailofbits/skills && \
   claude plugin marketplace add trailofbits/skills-curated && \
-  claude mcp add --transport http --scope project notion https://mcp.notion.com/mcp && \
-  claude mcp add --transport http --scope project slack https://mcp.slack.com/mcp && \
-  claude mcp add --transport http --scope project readwise https://mcp2.readwise.io/mcp && \
-  claude mcp add --transport http --scope project atlassian https://mcp.atlassian.com/v1/mcp
+  claude mcp add --transport http --scope project slack https://mcp.slack.com/mcp
   
 # Install Python 3.13 via uv (fast binary download, not source compilation)
 RUN uv python install 3.13 --default

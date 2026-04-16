@@ -17,10 +17,7 @@ Inspired by Trail of Bits' [claude-code-devcontainer](https://github.com/trailof
 - **Terminal**: tmux with mouse support and vi keys
 
 ### MCP Integrations
-- Notion
 - Slack
-- Readwise
-- Atlassian
 
 ### Key Features
 - Persistent shell history across container rebuilds (200k lines)
@@ -34,7 +31,6 @@ Inspired by Trail of Bits' [claude-code-devcontainer](https://github.com/trailof
 1. Copy `.devcontainer/.env.example` to `.devcontainer/.env`
 2. Fill in your tokens:
    - `CLAUDE_CODE_OAUTH_TOKEN` — Claude Code OAuth token
-   - `ATLASSIAN_API_TOKEN` — Atlassian API token
    - `GH_TOKEN` — GitHub personal access token
    - `DBT_CLI_TIMEOUT` — dbt CLI timeout in seconds (default: 600)
 3. Open this directory in VS Code
