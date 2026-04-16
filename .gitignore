@@ -1,0 +1,15 @@
+# Ignore everything
+*
+
+# Allow .gitignore itself
+!.gitignore
+
+# Allow README
+!README.md
+
+# Allow .devcontainer directory and its contents
+!.devcontainer/
+!.devcontainer/**
+
+# Exclude secrets
+.devcontainer/.env
