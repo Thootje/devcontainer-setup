@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm
 
     steps:
       - name: Checkout
@@ -34,9 +34,6 @@ jobs:
       - name: Configure Docker for Artifact Registry
         run: gcloud auth configure-docker europe-west4-docker.pkg.dev --quiet
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -45,7 +42,6 @@ jobs:
         with:
           context: .devcontainer
           file: .devcontainer/Dockerfile
-          platforms: linux/arm64
           push: true
           tags: |
             ${{ env.IMAGE }}:latest
