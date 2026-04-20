@@ -54,6 +54,12 @@ RUN ARCH=$(dpkg --print-architecture) && \
   esac && \
   curl -fsSL "https://github.com/junegunn/fzf/releases/download/v${FZF_VERSION}/fzf-${FZF_VERSION}-${FZF_ARCH}.tar.gz" | tar -xz -C /usr/local/bin
 
+# Install Google Cloud CLI
+RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && \
+  echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" > /etc/apt/sources.list.d/google-cloud-sdk.list && \
+  apt-get update && apt-get install -y --no-install-recommends google-cloud-cli && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Create directories and set ownership (combined for fewer layers)
 RUN mkdir -p /commandhistory /workspace /home/vscode/.claude /opt && \
   touch /commandhistory/.bash_history && \
