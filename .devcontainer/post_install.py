@@ -174,7 +174,6 @@ def fix_directory_ownership():
         Path.home() / ".claude",
         Path("/commandhistory"),
         Path.home() / ".config" / "gh",
-        Path.home() / ".config" / "gcloud",
     ]
 
     for dir_path in dirs_to_fix:
