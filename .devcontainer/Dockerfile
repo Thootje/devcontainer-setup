@@ -9,6 +9,7 @@ ENV TZ="$TZ"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install additional system packages (base image already includes git, curl, sudo, etc.)
+# hadolint ignore=DL3008
 RUN apt-get update && apt-get install -y --no-install-recommends \
   # Sandboxing support for Claude Code
   bubblewrap \
@@ -55,6 +56,7 @@ RUN ARCH=$(dpkg --print-architecture) && \
   curl -fsSL "https://github.com/junegunn/fzf/releases/download/v${FZF_VERSION}/fzf-${FZF_VERSION}-${FZF_ARCH}.tar.gz" | tar -xz -C /usr/local/bin
 
 # Install Google Cloud CLI
+# hadolint ignore=DL3008
 RUN curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg && \
   echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" > /etc/apt/sources.list.d/google-cloud-sdk.list && \
   apt-get update && apt-get install -y --no-install-recommends google-cloud-cli && \
@@ -87,14 +89,10 @@ RUN curl -fsSL https://claude.ai/install.sh | bash && \
   claude plugin marketplace add trailofbits/skills-curated && \
   echo "MCP setup complete"
   
-# Install Python 3.13 via uv (fast binary download, not source compilation)
-RUN uv python install 3.13 --default
-
-# Install ast-grep (AST-based code search)
-RUN uv tool install ast-grep-cli
-
-# Install rtk (Rust Token Killer - token-optimized CLI proxy)
-RUN curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+# Install Python 3.13, ast-grep, and rtk
+RUN uv python install 3.13 --default && \
+  uv tool install ast-grep-cli && \
+  curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
 
 # Install fnm (Fast Node Manager) and Node 22
 ARG NODE_VERSION=22
@@ -104,6 +102,9 @@ RUN curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$FNM_D
   eval "$(fnm env)" && \
   fnm install ${NODE_VERSION} && \
   fnm default ${NODE_VERSION}
+
+# Make node/npm/npx available without fnm shell initialization
+ENV PATH="$FNM_DIR/aliases/default/bin:$PATH"
 
 # Install Oh My Zsh
 # renovate: datasource=github-releases depName=deluan/zsh-in-docker
