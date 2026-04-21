@@ -104,7 +104,7 @@ RUN curl -fsSL https://fnm.vercel.app/install | bash -s -- --install-dir "$FNM_D
   fnm default ${NODE_VERSION}
 
 # Make node/npm/npx available without fnm shell initialization
-ENV PATH="$FNM_DIR/aliases/default/bin:$PATH"
+ENV PATH="/home/vscode/.fnm/aliases/default/bin:${PATH}"
 
 # Install Oh My Zsh
 # renovate: datasource=github-releases depName=deluan/zsh-in-docker
