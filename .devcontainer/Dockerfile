@@ -42,7 +42,7 @@ RUN ARCH=$(dpkg --print-architecture) && \
   rm /tmp/git-delta.deb
 
 # Install uv (Python package manager) via multi-stage copy
-COPY --from=uv /uv /usr/local/bin/uv
+COPY --from=uv /uv /uvx /usr/local/bin/
 
 # Install fzf from GitHub releases (newer than apt, includes built-in shell integration)
 # renovate: datasource=github-releases depName=junegunn/fzf
