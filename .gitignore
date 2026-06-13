@@ -1,5 +1,5 @@
 # Secrets
 .devcontainer/.env
 
-# Git worktrees
+# Git worktrees for PRs
 .worktrees/
