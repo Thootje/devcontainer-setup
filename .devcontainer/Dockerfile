@@ -1,6 +1,6 @@
 # Claude Code Devcontainer
 # Based on Microsoft devcontainer image for better devcontainer integration
-FROM ghcr.io/astral-sh/uv:0.10@sha256:10902f58a1606787602f303954cea099626a4adb02acbac4c69920fe9d278f82 AS uv
+FROM ghcr.io/astral-sh/uv:0.11.21@sha256:ff07b86af50d4d9391d9daf4ff89ce427bc544f9aae87057e69a1cc0aa369946 AS uv
 FROM mcr.microsoft.com/devcontainers/base:ubuntu24.04@sha256:4bcb1b466771b1ba1ea110e2a27daea2f6093f9527fb75ee59703ec89b5561cb
 
 ARG TZ
@@ -35,7 +35,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install git-delta
 # renovate: datasource=github-releases depName=dandavison/delta
-ARG GIT_DELTA_VERSION=0.18.2
+ARG GIT_DELTA_VERSION=0.19.2
 RUN ARCH=$(dpkg --print-architecture) && \
   curl -fsSL "https://github.com/dandavison/delta/releases/download/${GIT_DELTA_VERSION}/git-delta_${GIT_DELTA_VERSION}_${ARCH}.deb" -o /tmp/git-delta.deb && \
   dpkg -i /tmp/git-delta.deb && \
@@ -46,7 +46,7 @@ COPY --from=uv /uv /uvx /usr/local/bin/
 
 # Install fzf from GitHub releases (newer than apt, includes built-in shell integration)
 # renovate: datasource=github-releases depName=junegunn/fzf
-ARG FZF_VERSION=0.70.0
+ARG FZF_VERSION=0.73.1
 RUN ARCH=$(dpkg --print-architecture) && \
   case "${ARCH}" in \
     amd64) FZF_ARCH="linux_amd64" ;; \
