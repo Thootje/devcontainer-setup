@@ -89,10 +89,9 @@ RUN curl -fsSL https://claude.ai/install.sh | bash && \
   claude plugin marketplace add trailofbits/skills-curated && \
   echo "MCP setup complete"
   
-# Install Python 3.13, ast-grep, and rtk
+# Install Python 3.13 and ast-grep
 RUN uv python install 3.13 --default && \
-  uv tool install ast-grep-cli && \
-  curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/refs/heads/master/install.sh | sh
+  uv tool install ast-grep-cli
 
 # Install fnm (Fast Node Manager) and Node 22
 ARG NODE_VERSION=22
