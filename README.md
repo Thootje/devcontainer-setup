@@ -6,7 +6,7 @@ Inspired by Trail of Bits' [claude-code-devcontainer](https://github.com/trailof
 
 ## What's Included
 
-- [Claude Code](https://claude.ai/code) CLI with marketplace plugins and [RTK](https://github.com/rtk-ai/rtk) token proxy
+- [Claude Code](https://claude.ai/code) CLI with marketplace plugins
 - **Python 3.13** via [UV](https://github.com/astral-sh/uv) and **Node.js v22** via [fnm](https://github.com/Schniz/fnm)
 - **Google Cloud CLI** with persistent config volume
 - **GitHub CLI** (`gh`)
